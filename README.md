@@ -6,11 +6,12 @@
 - arXiv API、DeepL API、IFTTT、webhook、LINE Notify を使用
 
 ## Setup
+- DeepL API の認証キーを取得し```deepl-api-key.txt```に保存
+
 LINE に送信せず、ローカルにtsvとして結果を保存するだけの場合、以下の準備は必要なし。
 
 - IFTTT 登録
 - webhook のPOST先URL取得し```web-post-url.txt```に保存
-- DeepL API の認証キーを取得し```deepl-api-key.txt```に保存
 
 ## Usage
 
