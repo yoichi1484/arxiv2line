@@ -1,5 +1,6 @@
 import requests
 
+DEEPL_FREE_PLAN = False
 with open("deepl-api-key.txt") as f:
     AUTH_KEY = f.read()
 
@@ -18,8 +19,13 @@ def deepl(txt, target_lang="JA"):
         'Content-Type': 'application/x-www-form-urlencoded',
     }
     data = 'auth_key={}&text={}&target_lang={}'.format(AUTH_KEY, txt, target_lang)
-    response = requests.post('https://api-free.deepl.com/v2/translate', headers=headers, data=data) #.json()
-    print(response)
+    
+    if DEEPL_FREE_PLAN:
+        response = requests.post('https://api-free.deepl.com/v2/translate', headers=headers, data=data) #.json()
+    else:
+        response = requests.post('https://api.deepl.com/v2/translate', headers=headers, data=data)
+        
+    assert response != "<Response [403]>"
     response = response.json()
     
     if "message" in response.keys():

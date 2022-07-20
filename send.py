@@ -50,7 +50,7 @@ if __name__ == '__main__':
     logger.info('Post paper info in LINE ...')
     for paper in tqdm(paper_list):
         message = "\n".join(["<br>タイトル:  " + paper[-2], 
-                             "<br><br> 検索クエリ: " + query,
+                             "<br><br> 検索クエリ: " + args.q,
                              "<br><br>PDF: " + paper[1], 
                              "<br><br>出版日: {}/{}/{}".format(paper[2], paper[3], paper[4]), 
                              "<br><br>カテゴリ: " + paper[5],

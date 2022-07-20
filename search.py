@@ -17,7 +17,13 @@ def get_translated_metadata(result):
     day = str(result.published.day)
     
     cate = ", ".join(result.categories)
-    author = ", ".join([str(athr) for athr in result.authors])
+    
+    if len(result.authors) > 5:
+        author = ", ".join([str(athr) for athr in result.authors[:5]])
+        author += "et al. (+{})".format(len(result.authors) - 5)
+    else:
+        author = ", ".join([str(athr) for athr in result.authors])
+        
     if result.comment is None:
         comment = ""
     else:
